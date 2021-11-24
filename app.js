@@ -8,8 +8,10 @@ let gameState = {
 }
 
 let currentPlayer = gameState.players[0]
+let winner = document.getElementById("winner")
 
 function buildInitialState(){
+    winner.innerHTML = ""
     for(let i = 0; i < 9; i++){
         let cell = document.getElementsByClassName("cell")[i]
         cell.innerHTML = "click"
@@ -41,7 +43,7 @@ function onBoardClick(event){
     let tdCell = event.target
     //alert(event.target.className)
     cell = event.target.className
-
+    winner
     if(!(tdCell.className.includes("taken"))){
         tdCell.classList.add("taken")
         tdCell.innerText = currentPlayer.toString()
@@ -51,7 +53,12 @@ function onBoardClick(event){
 
 function checkWin(){
     if(checkRows() || checkColumns() || checkDiagonals()){
-        console.log(currentPlayer + " is winner")
+        if(currentPlayer === "x"){
+            winner.innerHTML = document.getElementById("playerOne") + " Is the winner"
+        }
+        else{
+            winner.innerHTML = document.getElementById("playerTwo") + " Is the winner"
+        }
         for(let i = 0; i < 9; i++){
             let cell = document.getElementsByClassName("cell")[i]
             cell.classList.add("taken")
