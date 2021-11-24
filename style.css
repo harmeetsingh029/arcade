@@ -1,3 +1,19 @@
 h1 {
     color: red;
 }
+
+tr {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+h1 {
+    margin: 20px;
+}
+
+td {
+    margin: 20px;
+    padding: 20px;
+}
+

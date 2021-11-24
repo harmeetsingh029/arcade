@@ -5,31 +5,38 @@
     </head>
 
     <body>
-        <h1>Tic-Tac-Toe</h1>
-        <form>
-            <label for="playerOne">Player One:</label><br>
-            <input type="text" id="playerOne" name="playerOne"><br>
-            <label for="playerTwo">Player Two:</label><br>
-            <input type="text" id="playerTwo" name="playerTwo">
-            <input type="submit" value="Submit">
-          </form>
+        <div class='title'>
+            <h1>Tic-Tac-Toe</h1>
+        </div>
+
+        <div class='names'>
+            
+                <label for="playerOne">Player One:</label><br>
+                <input type="text" id="playerOne" name="playerOne"><br>
+                <label for="playerTwo">Player Two:</label><br>
+                <input type="text" id="playerTwo" name="playerTwo"><br>
+                <button id = "submitButton" onClick = "getNames()" type="button">Submit</button>
+         
+        </div> 
+        
         <table id='board'>
             <tr>
-                <td>x</td>
-                <td>x</td>
-                <td>x</td>
+                <td class = "one">click</td>
+                <td class = "two">click</td>
+                <td class = "three">click</td>
             </tr>
             <tr>
-                <td>x</td>
-                <td>x</td>
-                <td>x</td>
+                <td class = "four">click</td>
+                <td class = "five">click</td>
+                <td class = "six">click</td>
             </tr>
             <tr>
-                <td>x</td>
-                <td>x</td>
-                <td>x</td>
+                <td class = "seven">click</td>
+                <td class = "eight">click</td>
+                <td class = "nine">click</td>
             </tr>
         </table>
+        
     </body>
 
 
