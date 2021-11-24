@@ -10,14 +10,16 @@ let gameState = {
 let currentPlayer = gameState.players[0]
 
 function buildInitialState(){
-    let cell = document.getElementsByClassName("cell")
-    cell.innerHTML = "click"
+    for(let i = 0; i < 9; i++){
+        let cell = document.getElementsByClassName("cell")[i]
+        cell.innerHTML = "click"
+        cell.classList.remove("taken")
+    }
     for(let i = 0; i < 3; i++){
         for(let k = 0; k < 3; k++){
             gameState.board[i][k] = null
         }
     }
-
 }
 
 function swapPlayer(){
@@ -29,13 +31,9 @@ function swapPlayer(){
     }
 }
 
-
-
-
 function getNames(){
     let playerNameOne = document.getElementById("playerOne")
     let playerNameTWo = document.getElementById("playerTwo")
-    //alert(playerNameOne.value + playerNameTWo.value)
 }
 
 
@@ -54,9 +52,48 @@ function onBoardClick(event){
 function checkWin(){
     if(checkRows() || checkColumns() || checkDiagonals()){
         console.log(currentPlayer + " is winner")
-        buildInitialState()
+        for(let i = 0; i < 9; i++){
+            let cell = document.getElementsByClassName("cell")[i]
+            cell.classList.add("taken")
+        }
     }
 }
+
+function renderState(tdCell){
+    if(tdCell.className.includes("one")){
+        gameState.board[0][0] = currentPlayer.toString()
+    }
+    else if(tdCell.className.includes("two")){
+        gameState.board[0][1] = currentPlayer.toString()
+    }
+    else if(tdCell.className.includes("three")){
+        gameState.board[0][2] = currentPlayer.toString()
+    }
+    else if(tdCell.className.includes("four")){
+        gameState.board[1][0] = currentPlayer.toString()
+    }
+    else if(tdCell.className.includes("five")){
+        gameState.board[1][1] = currentPlayer.toString()
+    }
+    else if(tdCell.className.includes("six")){
+        gameState.board[1][2] = currentPlayer.toString()
+    }
+    else if(tdCell.className.includes("seven")){
+        gameState.board[2][0] = currentPlayer.toString()
+    }
+    else if(tdCell.className.includes("eight")){
+        gameState.board[2][1] = currentPlayer.toString()
+    }
+    else if(tdCell.className.includes("nine")){
+        gameState.board[2][2] = currentPlayer.toString()
+    }
+    checkWin()
+    swapPlayer()
+}
+
+let board = document.getElementById('board')
+board.addEventListener('click', onBoardClick)
+
 
 function checkRows(){
     if(gameState.board[0][1] !== null && gameState.board[0][0] === gameState.board[0][1] && gameState.board[0][1] === gameState.board[0][2]){
@@ -99,42 +136,3 @@ function checkDiagonals(){
         return false
     }
 }
-
-
-
-
-
-function renderState(tdCell){
-    if(tdCell.className.includes("one")){
-        gameState.board[0][0] = currentPlayer.toString()
-    }
-    else if(tdCell.className.includes("two")){
-        gameState.board[0][1] = currentPlayer.toString()
-    }
-    else if(tdCell.className.includes("three")){
-        gameState.board[0][2] = currentPlayer.toString()
-    }
-    else if(tdCell.className.includes("four")){
-        gameState.board[1][0] = currentPlayer.toString()
-    }
-    else if(tdCell.className.includes("five")){
-        gameState.board[1][1] = currentPlayer.toString()
-    }
-    else if(tdCell.className.includes("six")){
-        gameState.board[1][2] = currentPlayer.toString()
-    }
-    else if(tdCell.className.includes("seven")){
-        gameState.board[2][0] = currentPlayer.toString()
-    }
-    else if(tdCell.className.includes("eight")){
-        gameState.board[2][1] = currentPlayer.toString()
-    }
-    else if(tdCell.className.includes("nine")){
-        gameState.board[2][2] = currentPlayer.toString()
-    }
-    checkWin()
-    swapPlayer()
-}
-
-let board = document.getElementById('board')
-board.addEventListener('click', onBoardClick)
