@@ -9,6 +9,7 @@ let gameState = {
 
 let currentPlayer = gameState.players[0]
 let winner = document.getElementById("winner")
+let taken = 0
 
 function buildInitialState(){
     winner.innerHTML = ""
@@ -22,6 +23,12 @@ function buildInitialState(){
             gameState.board[i][k] = null
         }
     }
+    let playerNameOne = document.getElementById("playerOne").value
+    let playerNameTwo = document.getElementById("playerTwo").value
+
+    document.getElementById("winImage").style.display = "none"
+
+    taken = 0
     swapPlayer()
 }
 
@@ -34,15 +41,12 @@ function swapPlayer(){
     }
 }
 
-function getNames(){
-    let playerNameOne = document.getElementById("playerOne")
-    let playerNameTWo = document.getElementById("playerTwo")
-}
-
 
 function onBoardClick(event){
+    // if(event.target === document.getElementsByTagName("tr")){
+    //     return
+    // }
     let tdCell = event.target
-    //alert(event.target.className)
     cell = event.target.className
     winner
     if(!(tdCell.className.includes("taken"))){
@@ -53,18 +57,29 @@ function onBoardClick(event){
 }
 
 function checkWin(){
+
+    playerNameOne = document.getElementById("playerOne").value
+    playerNameTwo = document.getElementById("playerTwo").value
+
     if(checkRows() || checkColumns() || checkDiagonals()){
         if(currentPlayer === "x"){
-            winner.innerHTML = document.getElementById("playerOne") + " Is the winner"
+            winner.innerHTML = playerNameOne + " is the winner!"
+            document.getElementById("winImage").style.display = "block"
         }
         else{
-            winner.innerHTML = document.getElementById("playerTwo") + " Is the winner"
+            winner.innerHTML = playerNameTwo + " is the winner!"
+            document.getElementById("winImage").style.display = "block"
         }
         for(let i = 0; i < 9; i++){
             let cell = document.getElementsByClassName("cell")[i]
             cell.classList.add("taken")
         }
     }
+    taken++
+    if(taken === 9){
+        winner.innerHTML = "It is a draw!"
+    }
+
 }
 
 function renderState(tdCell){

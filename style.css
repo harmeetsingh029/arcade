@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Comforter&family=Dosis:wght@200;400&family=Estonia&family=Mochiy+Pop+P+One&display=swap');
+
 * {
     box-sizing: border-box;
+    font-family: 'Bubblegum Sans', cursive;
 }
 
 h1 {
@@ -22,7 +25,7 @@ h1 {
 body {
     height: 100vh;
     width: 100vw;
-    
+    background-image: linear-gradient(to bottom right, rgb(199, 110, 194), rgb(212, 0, 255), rgb(162, 0, 255));
 }
 
 tr {
@@ -36,14 +39,14 @@ tr {
 td {
     margin: 0;
     padding: 50px;
-    text-align: center;
-    justify-content: center;
+    align-items: center;
     border-right: 3px solid black;
     border-bottom: 3px solid black;
     table-layout: fixed;
     text-decoration: none;
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
+    font-size: 35px;
 }
 
 .three, .six, .nine {
@@ -73,7 +76,7 @@ button {
     text-decoration: none;
     text-align: center;
     font-size: 20px;
-    color: black;
+    color: white;
     transition-duration: 0.5s;
     background-color: navy;
     justify-content: center;
@@ -85,6 +88,18 @@ button:hover {
     box-shadow: 0 5px rgba(0, 0, 0, 0.514);
 }
 
-/* #tableBoard {
-    overflow-x:auto
-} */
+#theWinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img { 
+    align-items: center;
+    justify-content: center;
+}
+#winImage {
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
