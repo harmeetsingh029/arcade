@@ -10,6 +10,7 @@ let gameState = {
 let currentPlayer = gameState.players[0]
 let winner = document.getElementById("winner")
 let taken = 0
+console.log(document.getElementsByTagName("tr"))
 
 function buildInitialState(){
     winner.innerHTML = ""
@@ -43,12 +44,10 @@ function swapPlayer(){
 
 
 function onBoardClick(event){
-    // if(event.target === document.getElementsByTagName("tr")){
-    //     return
-    // }
+
     let tdCell = event.target
     cell = event.target.className
-    winner
+    
     if(!(tdCell.className.includes("taken"))){
         tdCell.classList.add("taken")
         tdCell.innerText = currentPlayer.toString()
