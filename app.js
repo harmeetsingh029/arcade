@@ -10,7 +10,7 @@ let gameState = {
 let currentPlayer = gameState.players[0]
 let winner = document.getElementById("winner")
 let taken = 0
-console.log(document.getElementsByTagName("tr"))
+
 
 function buildInitialState(){
     winner.innerHTML = ""
@@ -28,6 +28,8 @@ function buildInitialState(){
     let playerNameTwo = document.getElementById("playerTwo").value
 
     document.getElementById("winImage").style.display = "none"
+    document.getElementById("turn").style.display = "block"
+    document.getElementById("turn").innerHTML = "Player X's turn"
 
     taken = 0
     swapPlayer()
@@ -36,10 +38,13 @@ function buildInitialState(){
 function swapPlayer(){
     if(currentPlayer === 'x'){
         currentPlayer = gameState.players[1]
+        document.getElementById("turn").innerHTML = "Player O's turn"
     }
     else{
         currentPlayer = gameState.players[0]
+        document.getElementById("turn").innerHTML = "Player X's turn"
     }
+    
 }
 
 
@@ -47,7 +52,7 @@ function onBoardClick(event){
 
     let tdCell = event.target
     cell = event.target.className
-    
+
     if(!(tdCell.className.includes("taken"))){
         tdCell.classList.add("taken")
         tdCell.innerText = currentPlayer.toString()
@@ -64,10 +69,13 @@ function checkWin(){
         if(currentPlayer === "x"){
             winner.innerHTML = playerNameOne + " is the winner!"
             document.getElementById("winImage").style.display = "block"
+            document.getElementById("turn").style.display = "none"
         }
         else{
             winner.innerHTML = playerNameTwo + " is the winner!"
             document.getElementById("winImage").style.display = "block"
+            document.getElementById("turn").style.display = "none"
+            swapPlayer()
         }
         for(let i = 0; i < 9; i++){
             let cell = document.getElementsByClassName("cell")[i]
