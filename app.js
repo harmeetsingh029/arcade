@@ -14,7 +14,7 @@ function buildInitialState(){
     winner.innerHTML = ""
     for(let i = 0; i < 9; i++){
         let cell = document.getElementsByClassName("cell")[i]
-        cell.innerHTML = "click"
+        cell.innerHTML = ""
         cell.classList.remove("taken")
     }
     for(let i = 0; i < 3; i++){
@@ -22,6 +22,7 @@ function buildInitialState(){
             gameState.board[i][k] = null
         }
     }
+    swapPlayer()
 }
 
 function swapPlayer(){
